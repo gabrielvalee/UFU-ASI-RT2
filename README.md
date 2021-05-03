@@ -36,7 +36,7 @@ Para gerar a chave pública correspondente:
 openssl rsa -in arquivo_chave_privada.pem -pubout -out arquivo_chave_publica.pem
 ```
 
-Primeiramente resolvemos fazer os "Servidores" por funções, para simular o funcionamento do Tor, a mensagem deve ser inicialmente cifrada com a chave pública do último nó que irá receber a mensagem, no caso, o próprio destinatário. A mensagem cifrada é cifrada novamente com a chave pública do nó antecessor no fluxo de transmissão, que na nossa implementação é o servidor3. E assim por diante, até que a mensagem tenha sido cifrada com a chave pública de todos os nós na linha de transmissão (servidor2 e por último, o servidor1), formando as camadas da cebola.
+Resolvemos fazer os "Servidores" por funções, para simular o funcionamento do Tor, a mensagem deve ser inicialmente cifrada com a chave pública do último nó que irá receber a mensagem, no caso, o próprio destinatário. A mensagem cifrada é cifrada novamente com a chave pública do nó antecessor no fluxo de transmissão, que na nossa implementação é o servidor3. E assim por diante, até que a mensagem tenha sido cifrada com a chave pública de todos os nós na linha de transmissão (servidor2 e por último, o servidor1), formando as camadas da cebola.
 
 Então após criptografar as camadas é enviado para a função do servidor 1, que após descriptografar a parte dele envia para o proximo até retornar a mensagem original. 
 
